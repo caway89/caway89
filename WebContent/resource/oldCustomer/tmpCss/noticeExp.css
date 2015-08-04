@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+/* p:before{
+
+	content: "important";
+	background: yellow;
+	color:red;
+	font-weight: bold; 
+} */
+
+.content-clear:after{
+	content: " after는 자식중 제일 막내 뒤로 가는 기능";
+	display: block	;            /* p 테그는 block영역 없기 때문에 blok(공간)을 만들어 준다. */
+	/* height:300px; */    		    /* block이 만들어져야 너비, 높이 지정 가능 */
+	background: yellow;  /* 배경색        */
+	color:red;  				    /* 폰트 색깔    */
+	font-weight: bold; 
+	/* visibility: hidden; */
+ 	line-height: 0; 
+	height: 0;
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans"  
+	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation=" 
+    
+    	http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd 
+        
+    	http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<context:annotation-config />
+
+	<!-- id: Ioc 컨테이너가 식별하는 이름, id 대신에 name을 사용해도 됨 -->
+	<bean id="noticeDao" class="com.newlecture.web.dao.mybatis.MybatisNoticeDao"></bean> <!-- MyBatis -->
+	<!-- <bean id="noticeDao" class="com.newlecture.web.HiNoticeDao"></bean> -->	<!-- Hibernate -->
+	
+	<bean id="console" class="com.newlecture.web.NoticeConsole">
+	
+		<!-- setNotceDao(noticeDao) setter함수를 호출 하면서 noticeDao 객체 Injection! -->
+		<property name="noticeDao" ref="noticeDao"/>  <!-- 어노테이션으로 바꾸기 -->
+		
+	</bean>    
+
+
+</beans> 

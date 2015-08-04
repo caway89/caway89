@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" 
+       	http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd 
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+       	http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- <context:annotation-config></context:annotation-config> -->
+
+	<!-- 사용자가 모든 컨트롤러를 요청하는건 아니기 때문에 -->
+	<!-- resource 예외에 방을 만듬 dispatcher가 관여하지 않음 -->
+	<mvc:annotation-driven /> <!-- 어노테이션과 구분 컨트롤러를 찾기위한 코드 <context:annotation-config /> -->
+	<mvc:resources
+		mapping="/resource/**" 
+		location="/resource/"/> <!-- mapping된곳이 오면 location에서 찾아라 -->
+
+	<!-- 별도의 처리기 필요 -->
+
+	<!-- id는 URL을 의미 그 URL에 해당하는 Controller 객체 생성함 -->
+	<!-- 하지만 CustomerController에 모아놔서 이렇게 일일이 객체를 생성 할 필요 없음 -->
+	<!-- <bean id="/customer/notice" class="com.newlecture.web.controller.SpringNoticeController"></bean> -->
+
+	<!-- Spring MVC, Controller를 하나에서 관리 -->
+	<!-- 이렇게 com.newlecture.web.controller Package로 한정지어서 Spring이 해당 Controller만 
+		뒤지게 한다. -->
+	<context:component-scan base-package="com.newlecture.web.controller" />
+
+	<!-- 이렇게 해도 되는데 Spring이 검사하는데 너무 오래 걸림 -->
+	<!-- <context:component-scan base-package="com.newlecture.web"/> -->
+
+
+	<!-- multipart 형태로 전송되는 것을 받아들이기위해 Spring에게 알려준다. -->
+	<bean
+		name="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		<property
+			name="maxUploadSize"
+			value="100000000"></property>
+			
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions" value="/WEB-INF/tiles.xml"/>
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass">
+			<value>
+				org.springframework.web.servlet.view.tiles3.TilesView
+			</value>
+		</property>
+	
+	</bean>
+
+
+</beans>

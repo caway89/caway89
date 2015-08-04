@@ -1,0 +1,90 @@
+@CHARSET "EUC-KR";
+
+/* h1,h2
+{
+	color:blue;
+} */ 
+
+/* 	nav
+	{
+		color:green;font-weight: bold;
+	}   */
+
+/* aside.h1
+	color:red;
+} */
+
+/* #main-menu
+{
+
+	color:green;
+} */
+
+#test
+{
+	color:red;
+} 
+	
+/* input[type="submit"]
+{
+	color:red; 
+	font-weight:bold; 
+} */
+
+/* 	header > section.h1
+	{
+		color: red;
+		font-weight: bold;
+	}  */
+	
+	/* #lecture-search-form input[type="text"] /*-- 방법1  */
+	#lecture-search-form > form > fieldset > legend + label + input 
+	{
+		color:blue;
+		font-weight: bold;	 
+	}
+	
+/* 	#lecture-search-form [label="과정검색"]
+	{
+		color:red;
+	}  
+	
+/* 	#main-menu li a {
+		color:green;
+		font-weight: bold; 
+	} */
+	
+	#main-menu li:FIRST-CHILD a /* 첫째 */
+	{
+		color:pink;
+		font-weight: bold; 
+	}
+	
+	 #main-menu li:FIRST-CHILD + li a  /* 둘째 li에 자식임으로*/
+	{
+		color:pink;
+		font-weight: bold; 
+	}
+	
+	#main-menu li:FIRST-CHILD + li + li a /* 셋째 */
+	{
+		color:pink;
+		font-weight: bold; 
+	}
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

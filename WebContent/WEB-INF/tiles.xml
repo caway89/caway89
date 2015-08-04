@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+   <definition name="home.*" template="/WEB-INF/view/inc/layout.jsp">
+    <put-attribute name="title" value="Tiles tutorial homepage" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/{1}.jsp"  />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+    </definition>
+    
+ <!-- 레이아웃과 디렉토리 구조가 다르니까 -->
+    
+ <!--  <definition name="customer.notice" template="/WEB-INF/view/customer/inc/layout.jsp"> -->
+ <!--  <definition name="customer.*" template="/WEB-INF/view/customer/inc/layout.jsp"> -->
+  <definition name="*.*" template="/WEB-INF/view/{1}/inc/layout.jsp">
+    <put-attribute name="title" value="Tiles tutorial homepage" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="aside" value="/WEB-INF/view/{1}/inc/aside.jsp" />
+    <!-- <put-attribute name="body" value="/WEB-INF/view/customer/notice.jsp"  /> -->
+    <put-attribute name="body" value="/WEB-INF/view/{1}/{2}.jsp"  />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition> <!-- 조립해달라고 알려줌  name명으로 알려줘야함-->
+  
+</tiles-definitions>
